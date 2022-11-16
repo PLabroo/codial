@@ -1,7 +1,13 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
+const db = require('./config/mongoose');
 
+// Accessing forms and data-->requests
+app.use(express.urlencoded({ extended: true }));
+
+// app.use(cookieParser);
 // Accessing Static Files - Assests
 app.use(express.static('./assests'));
 // Layout Usage
