@@ -1,0 +1,15 @@
+<!-- Also called as Partials -->
+
+<link rel="stylesheet" href="/css/user_profile.css">
+
+<div>
+    <p>Name:-<%= user.name %></p>
+</div>
+
+<div>
+    <p>Email:-<%= user.email %></p>
+</div>
+
+<form action="/users/logout" method="POST">
+    <button>Logout</button>
+</form>
