@@ -1,0 +1,20 @@
+header {
+  font-family: sans-serif;
+  background-color: #211f1f;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; }
+  header h1 {
+    font-size: 5vh;
+    padding: 2px 2px;
+    margin: 0px 6px; }
+  header ul {
+    display: flex; }
+  header li {
+    list-style: none;
+    margin-right: 4px; }
+  header a {
+    text-decoration: none;
+    color: whitesmoke;
+    padding-right: 5px; }
