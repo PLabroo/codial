@@ -1,0 +1,17 @@
+footer {
+  font-family: sans-serif;
+  background-color: #211f1f;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 100%; }
+  footer ul {
+    display: flex; }
+  footer li {
+    list-style: none;
+    margin-right: 4px; }
+  footer a {
+    text-decoration: none;
+    color: whitesmoke;
+    padding-right: 5px; }
