@@ -1,0 +1,24 @@
+footer
+{
+    font-family: sans-serif;
+    background-color: rgb(33, 31, 31);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top:100%;
+    ul {
+        display: flex;
+    }
+    
+    li {
+        list-style: none;
+        margin-right: 4px;
+    }
+
+    a {
+        text-decoration: none;
+        color: whitesmoke;
+        padding-right: 5px;
+    }
+}

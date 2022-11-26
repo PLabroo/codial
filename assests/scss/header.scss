@@ -1,0 +1,28 @@
+
+header{
+    font-family: sans-serif;
+    background-color: rgb(33, 31, 31);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+
+    h1{
+        font-size: 5vh;
+        padding: 2px 2px;
+        margin: 0px 6px;
+    }
+    ul{
+        display: flex;
+    }
+    li{
+        list-style: none;
+        margin-right:4px;
+    }
+    a{
+        text-decoration: none;
+        color: whitesmoke;
+        padding-right:5px;
+    }
+    
+}
