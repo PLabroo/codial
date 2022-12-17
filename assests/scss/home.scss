@@ -1,0 +1,46 @@
+#posts-container{
+    display: flex;
+    font-family: sans-serif;
+
+    #feed-posts{
+        width:70%;
+        padding:1rem;
+    }
+    #user-friends{
+        width:30%;
+        padding:1rem;
+        border-left:1px solid grey;
+        height: 100%;
+    }
+
+    #posts-list-container{
+        border-radius: 1%;
+        padding:0.2rem;
+        margin-top: 1rem;
+        color: black;
+
+        div{
+           
+            margin: 1rem 0;
+        }
+        ul{
+            list-style: none;
+        }
+
+        li{
+            background-color: rgb(210, 205, 205);
+            margin:0.5rem 0;
+        }
+        small{
+            font-weight: 600;
+        }
+
+        input{
+            border:1px solid black;
+            padding:0.2rem;
+            margin-bottom:1rem;
+            border-radius: 5%;
+
+        }
+    }
+}

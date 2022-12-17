@@ -1,0 +1,15 @@
+<li id="comment-<%=comment._id%>">
+    <p>
+        <!-- if user is signed in & logged in user has permission to delete -->
+        <% if(locals.user && locals.user.id==comment.user.id){%>
+            <small>
+                <a class="delete-comment-button" href="/comments/destroy/<%=comment._id%>">DELETE</a>
+            </small>
+        <%} %>
+        <%=comment.content %>
+        <br>
+        <small>
+            <%= comment.user.name %>
+        </small>
+    </p>
+</li>

@@ -1,13 +1,15 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
-const port = 8000;
+const port = 3000;
 const db = require('./config/mongoose');
 
 // Setting up auth
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport');
+const passportJWT = require('./config/passport-jwt-strategy');
+const passportGoogle = require('./config/passport-google-oauth');
 
 // Used to save the login(session-cookie) even after the server restart in db
 const MongoStore = require('connect-mongo')(session);
@@ -15,11 +17,15 @@ const MongoStore = require('connect-mongo')(session);
 // Scss/Sass-->Middleware(to css)
 const sassMiddleware = require('node-sass-middleware');
 
+// Connect flash for animated notifications
+const flash = require('connect-flash');
+
+const customMware = require('./config/middleware');
 
 app.use(sassMiddleware({
     src: './assests/scss',
     dest: './assests/css',
-    debug: 'true',
+    debug: false,
     outputStyle: 'extended',
     prefix: '/css'
 }));
@@ -29,6 +35,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Accessing Static Files - Assests
 app.use(express.static('./assests'));
+
+// make the uploads path available to user(static method);
+app.use('/uploads', express.static(__dirname + '/uploads'));
 // Layout Usage
 const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
@@ -64,6 +73,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+app.use(flash());
+app.use(customMware.setFlash);
 
 //use express router
 app.use('/', require('./routes/'));
