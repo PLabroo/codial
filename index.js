@@ -1,6 +1,11 @@
 const express = require('express');
+const env = require('./config/environment');
+const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const app = express();
+
+// Used for view helpers after minifying
+require('./config/view_helper')(app);
 const port = 3000;
 const db = require('./config/mongoose');
 
@@ -22,9 +27,17 @@ const flash = require('connect-flash');
 
 const customMware = require('./config/middleware');
 
+// Setting up for socket
+const chatServer = require('http').Server(app);
+const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
+chatServer.listen(5000);
+console.log("Chat server listening on 5k")
+
+const path = require('path');
+
 app.use(sassMiddleware({
-    src: './assests/scss',
-    dest: './assests/css',
+    src: path.join(__dirname,env.assetPath,'scss'),
+    dest: path.join(__dirname,env.assetPath,'css'),
     debug: false,
     outputStyle: 'extended',
     prefix: '/css'
@@ -34,15 +47,18 @@ app.use(sassMiddleware({
 app.use(express.urlencoded({ extended: true }));
 
 // Accessing Static Files - Assests
-app.use(express.static('./assests'));
+app.use(express.static(env.assetPath));
 
 // make the uploads path available to user(static method);
 app.use('/uploads', express.static(__dirname + '/uploads'));
+
+// FOR RFS
+app.use(logger(env.morgan.mode, env.morgan.options));
 // Layout Usage
 const expressLayouts = require('express-ejs-layouts');
 app.use(expressLayouts);
 
-// Setting up static files using express
+// Setting up static files using express for layouts
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
 
@@ -53,7 +69,7 @@ app.set('views', './views');
 app.use(session({
     name: 'Codeial',
     // TODO change secret before deployment
-    secret: 'blahsometing',
+    secret: env.sessionCookie,
     saveUninitialized: false,
     resave: false,
     cookie: {

@@ -14,6 +14,9 @@
                     $('#post-comments-list >ul').prepend(newComment);
                     deleteComment($(' .delete-comment-button', newComment));
                     
+                    // enable the functionality of toggle like button on new comment
+                    // new ToggleLike($(' .toggle-like-button', newComment));
+
                     new Noty({
                         theme: "relax",
                         text: "Comment made!",
@@ -40,6 +43,11 @@
         <br>
         <small>
                 ${comment.user.name}
+        </small>
+        <small> 
+            <a href="/likes/toggle/?id=${comment._id}&type=Comment" class="toggle-like-button" data-likes="0">
+                0 Likes
+            </a> 
         </small>
     </p>
         </li>`)

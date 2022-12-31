@@ -16,6 +16,8 @@
                     $('#posts-list-container >ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
 
+                    // enable the functionality of toggle like button on new post
+                    // new ToggleLike($(' .toggle-like-button', newPost));
 
                     new Noty({
                         theme: "relax",
@@ -47,6 +49,13 @@ let newPostDOM = (post) => {
             <small>
                 ${post.user.name}
             </small>
+            
+            <small>
+                <a href="/likes/toggle/?id=${post._id}&type=Post" class="toggle-like-button" data-likes="0">
+                    0 Likes
+                </a> 
+            </small>
+
         </p>
         <div class="post-comments">
                 <form action="/comments/create" method="POST">

@@ -12,4 +12,18 @@
             <%= comment.user.name %>
         </small>
     </p>
+    <br>
+    <p>
+        <!-- study about data attribute -->
+        <small>
+            <% if(locals.user){%>
+                <a href="/likes/toggle/?id=<%=comment._id%>&type=Comment" class="toggle-like-button"
+                    data-likes="<%=comment.likes.length %>">
+                    <%=comment.likes.length %> Likes
+                </a>
+            <%}else{%>
+                <%=comment.likes.length %> Likes
+            <%}%>
+        </small>
+    </p>
 </li>

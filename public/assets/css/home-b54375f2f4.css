@@ -1,0 +1,30 @@
+#posts-container {
+  display: flex;
+  font-family: sans-serif; }
+  #posts-container #feed-posts {
+    width: 70%;
+    padding: 1rem; }
+  #posts-container #user-friends {
+    width: 30%;
+    padding: 1rem;
+    border-left: 1px solid grey;
+    height: 100%; }
+  #posts-container #posts-list-container {
+    border-radius: 1%;
+    padding: 0.2rem;
+    margin-top: 1rem;
+    color: black; }
+    #posts-container #posts-list-container div {
+      margin: 1rem 0; }
+    #posts-container #posts-list-container ul {
+      list-style: none; }
+    #posts-container #posts-list-container li {
+      background-color: #d2cdcd;
+      margin: 0.5rem 0; }
+    #posts-container #posts-list-container small {
+      font-weight: 600; }
+    #posts-container #posts-list-container input {
+      border: 1px solid black;
+      padding: 0.2rem;
+      margin-bottom: 1rem;
+      border-radius: 5%; }

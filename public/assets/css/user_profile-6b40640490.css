@@ -1,0 +1,11 @@
+body {
+  background-color: #efbf44; }
+  body img {
+    height: 25vh;
+    width: 15vw;
+    border-radius: 50%;
+    margin: 5vh 5vh;
+    border: 2px solid black;
+    box-shadow: 2px 0px red; }
+  body input {
+    margin: 3vh auto 3vh; }

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="<%= assetPath('css/home.css') %>">
 
 <div id="posts-container">
     <section id="feed-posts">
@@ -34,6 +34,30 @@
                 <%}%>
         </ul>
     </section>
+    <%- include("_chat_box") %>
 </div>
-<script src="/js/home_posts.js"></script>
-<script src="/js/post_comments.js"></script>
+<script src="<%= assetPath('js/home_posts.js') %>"></script>
+<!-- <script src="/js/post_comments.js"></script> -->
+<!-- <script src="<%= assetPath('js/post_comments.js') %>"></script> -->
+
+
+<!-- importing the script file for toggle likes,also running it over for already present posts and comments -->
+<script src="<%= assetPath('js/toggle_likes.js') %>"></script>
+<script>
+    $('.toggle-like-button').each(()=>{
+        let self = this;
+        let toggleLike = new ToggleLike(self);
+    });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"
+    integrity="sha512-YeeA/Qxn5hYdkukScTCNNOhTrv1C2RubAGButJ1rmgQwZf/HdRaCGl+JAVkqsqaNRaYNHdheiuKKuPf9mDcqKg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+<script src="<%= assetPath('js/chat_engine.js')%>"></script>
+
+<% if(locals.user) {%>
+    <script>
+        new ChatEngine('user-chat-box','<%= locals.user.email %>')
+    </script>
+<%}%>
